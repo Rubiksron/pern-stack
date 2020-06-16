@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 const cors = require('cors');
 const pool = require('./db');
 
@@ -14,6 +14,7 @@ app.use(express.json());
 app.post('/todos', async (req, res) => {
   try {
     const { description } = req.body;
+    console.log('17-description: ', description);
     const VALUES = [description];
     const newTodo = await pool.query('INSERT INTO todo (description) VALUES($1) RETURNING *', VALUES);
     res.json(newTodo.rows);
@@ -51,7 +52,7 @@ app.put('/todos/:id', async (req, res) => {
     const updateTodo = await pool.query("UPDATE todo SET description = $1 WHERE todo_id = $2", VALUES);
     res.json('todo was updated');
   } catch (err) {
-    console.errora(err.message);
+    console.error(err.message);
   }
 })
 // DELETE A TODO
@@ -60,7 +61,7 @@ app.delete('/todos/:id', async (req, res) => {
   try {
     const { id } = req.params;
     const VALUES = [id];
-    const deleteTodo = await pool.query('DELETE FROM todo WHERE todo_id = $1', VALUES)
+    const deleteTodo = await pool.query('DELETE FROM todo WHERE todo_id = $1', VALUES);
     res.json('todo was deleted!');
   } catch (err) {
     console.error(err.message);
