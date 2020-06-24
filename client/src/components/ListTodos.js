@@ -31,7 +31,7 @@ const ListTodos = () => {
       console.error(err.message);
     }
   }
-  //use effect will make a fetch each time the component is rendered, calling the above function
+  //use effect will make a fetch each time the component is rendered, calling the above function, the empty array makes sure it only does so once
   useEffect(() => {
     getTodos();
   }, [])
@@ -47,13 +47,7 @@ const ListTodos = () => {
           </tr>
         </thead>
         <tbody>
-
-          {/* <tr>
-            <td>John</td>
-            <td>Doe</td>
-            <td>john@example.com</td>
-          </tr> */}
-          -{todos.map(todo => (
+          {todos.map(todo => (
             <tr key={todo.todo_id}>
               <td>{todo.description}</td>
               <td>
