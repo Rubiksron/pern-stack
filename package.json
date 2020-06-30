@@ -4,7 +4,7 @@
   "description": "using psql, express, react, and node to create an app that will hit the Pokemon API and return a list of stats on a specific Pokemon",
   "main": "index.js",
   "scripts": {
-    "start": "node server/index.js",
+    "start": "node index.js",
     "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "repository": {
@@ -19,5 +19,12 @@
   "bugs": {
     "url": "https://github.com/Rubiksron/pern-stack/issues"
   },
-  "homepage": "https://github.com/Rubiksron/pern-stack#readme"
+  "homepage": "https://github.com/Rubiksron/pern-stack#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "create-react-app": "^3.4.1",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.4",
+    "pg": "^8.2.1"
+  }
 }
