@@ -4,8 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server/index.js",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "dev": "run-p dev:**",
+    "dev:server": "nodemon server.js",
+    "dev:app": "cd client && yarn start",
+    "build:app": "cd client && yarn build",
+    "start": "node server.js",
+    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
   "author": "",
   "license": "ISC",
